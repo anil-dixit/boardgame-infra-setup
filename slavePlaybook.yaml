@@ -1,0 +1,17 @@
+---
+- name: Slaves Config Playbook 
+  hosts: slaves 
+  become: true 
+  tasks:
+    - name: Copy installation script to remote host
+      copy:
+       src: /home/ubuntu/slave_installation.sh
+       dest: /tmp/installation_script.sh
+       mode: '0755'
+
+    - name: Execute the installation script
+      command: /tmp/installation_script.sh
+
+    - name: Run additional command
+      command: kubeadm join 172.31.44.202:6443 --token ju7p8e.dnhv1yzplmlg9wwf \--discovery-token-ca-cert-hash sha256:29d20d13fe0638e236db4e4d4da7601b49367db373062dca63e0809130e4b8d4
+  
