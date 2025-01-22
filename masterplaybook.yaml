@@ -5,7 +5,7 @@
   tasks:
    - name: Copy installation script to remote host
      copy:
-      src: /home/ubuntu/masterinstallation_script.sh
+      src: /home/ubuntu/k8s/masterinstallation_script.sh
       dest: /tmp/installation_script.sh
       mode: '0755'
 
@@ -13,7 +13,7 @@
      command: /tmp/installation_script.sh
 
    - name: Run additional command and register output
-     command: sudo kubeadm init --apiserver-advertise-address={privateIp} --pod-network-cidr=10.244.0.0/16
+     command: sudo kubeadm init --apiserver-advertise-address={privateIpofMasterInstance} --pod-network-cidr=10.244.0.0/16
      register: command_output
 
    - name: Save command output to a file
