@@ -33,15 +33,14 @@ sudo systemctl enable jenkins
 sudo systemctl start jenkins
 
 # Create a directory named 'terraform' and terraform files 
-sudo -u ubuntu mkdir -p /home/ubuntu/terraform
-sudo -u ubuntu touch /home/ubuntu/terraform/terraform.tfvars
-sudo -u ubuntu touch /home/ubuntu/terraform/variables.tf
-sudo -u ubuntu touch /home/ubuntu/terraform/main.tf
-sudo -u ubuntu touch /home/ubuntu/slave_installation.sh
-sudo -u ubuntu touch /home/ubuntu/installation_script.sh
-sudo -u ubuntu touch /home/ubuntu/masterplaybook.yaml
-sudo -u ubuntu touch /home/ubuntu/slaveplaybook.yaml
-sudo -u ubuntu touch /home/ubuntu/configplaybook.yaml
+# Install Git
+echo "Installing Git..."
+sudo apt-get install -y git
+
+sudo -u ubuntu mkdir -p /home/ubuntu/k8s
+
+echo "Cloning repository..."
+git clone https://username:token@github.com/anil-dixit/k8s-cluster-setup.git /home/ubuntu/k8s
 
 # Generate an SSH key pair without prompts 
 sudo -u ubuntu ssh-keygen -t rsa -b 2048 -f /home/ubuntu/.ssh/id_rsa -q -N ""
