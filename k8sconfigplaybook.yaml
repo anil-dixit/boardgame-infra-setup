@@ -10,13 +10,13 @@
         mode: '0755'
 
     - name: Check if admin.conf exists in .kube/config 
-	  stat: 
-	    path: /home/ubuntu/.kube/config 
-	  register: admin_conf_stat
-	  
+      stat: 
+        path: /home/ubuntu/.kube/config 
+      register: admin_conf_stat
+      
     - name: Copy admin.conf to .kube/config
       command: sudo cp -i /etc/kubernetes/admin.conf /home/ubuntu/.kube/config
-	  when: not admin_conf_stat.stat.exists
+      when: not admin_conf_stat.stat.exists
 
     - name: Change ownership of .kube/config
       file:
@@ -27,4 +27,4 @@
 
     - name: Apply Flannel CNI
       command: kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
-	  become_user: ubuntu
+      become_user: ubuntu
