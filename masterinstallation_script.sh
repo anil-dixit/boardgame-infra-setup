@@ -81,7 +81,7 @@ tar -xzvf kubeaudit_0.21.0_linux_amd64.tar.gz
 sudo mv kubeaudit /usr/local/bin/
 
 # Verify installation
-kubeaudit --version
+kubeaudit version
 
 echo "kubeaudit installation completed successfully!"
 
