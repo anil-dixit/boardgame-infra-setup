@@ -42,6 +42,23 @@ sudo -u ubuntu mkdir -p /home/ubuntu/k8s
 echo "Cloning repository..."
 git clone https://username:token@github.com/anil-dixit/k8s-cluster-setup.git /home/ubuntu/k8s
 
+echo "Changing directory to /home/ubuntu/k8s"
+cd /home/ubuntu/k8s
+
+# Install dos2unix if available
+if ! command -v dos2unix &> /dev/null
+then
+    echo "dos2unix not found, installing it..."
+    sudo apt-get update
+    sudo apt-get install -y dos2unix
+else
+    echo "dos2unix is already installed"
+fi
+
+# Convert line endings of all .sh files to Unix format
+echo "Converting line endings..."
+find /home/ubuntu/k8s -type f -name "*.sh" -exec dos2unix {} \;
+
 # Generate an SSH key pair without prompts 
 sudo -u ubuntu ssh-keygen -t rsa -b 2048 -f /home/ubuntu/.ssh/id_rsa -q -N ""
 
