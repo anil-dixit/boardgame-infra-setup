@@ -132,6 +132,8 @@ echo "Starting Node Exporter..."
 
 echo "Node Exporter installation and start complete!"
 
+sudo usermod -aG docker jenkins
+
 
 
 
