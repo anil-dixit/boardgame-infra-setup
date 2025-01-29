@@ -1,6 +1,6 @@
 # terraform.tfvars
-aws_access_key      = "AKIAXYKJQLFVP2RXGJX6"
-aws_secret_key      = "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"
+aws_access_key      = ""
+aws_secret_key      = ""
 aws_region          = "ap-south-1"
 
 instance_ami        = "ami-09b0a86a2c84101e1"
